@@ -1,21 +1,39 @@
-CREATE DATABASE lab1
-CREATE TABLE user {
-    id INT AUTO_INCREMENT,
+CREATE DATABASE lab1;
+
+\ с lab1;
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
     first_name VARCHAR(50),
-    last_name VARCHAR(50),
-}
+    last_name VARCHAR(50)
+);
 
-ALTER TABLE user ADD COLUMN is_admin TYNIINT(1) DEFAULT 0
-ALTER TABLE user ALTER COLUMN is_admin TYPE BOOLEAN DEFAULT FALSE
-ALTER TABLE user ADD PRIMARY KEY (id)
+ALTER TABLE
+    users
+ADD
+    COLUMN is_admin INT DEFAULT 0;
 
-CREATE TABLE tasks {
-    id INT AUTO_INCREMENT PRIMARY KEY,
+ALTER TABLE
+    users
+ALTER COLUMN
+    is_admin DROP DEFAULT;
+
+ALTER TABLE
+    users
+ALTER COLUMN
+    is_admin TYPE BOOLEAN USING (is_admin :: BOOLEAN);
+
+ALTER TABLE
+    users
+ALTER COLUMN
+    is_admin DROP DEFAULT;
+
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    user_id INT,
-}
+    user_id INT
+);
 
-DROP TABLE tasks
-DROP DATABASE lab1
+DROP TABLE tasks;
 
-
+DROP DATABASE lab1;
