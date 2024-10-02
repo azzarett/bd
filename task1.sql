@@ -26,7 +26,7 @@ ALTER COLUMN
 ALTER TABLE
     users
 ALTER COLUMN
-    is_admin DROP DEFAULT;
+    is_admin DEFAULT FALSE;
 
 CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
